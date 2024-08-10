@@ -1,6 +1,10 @@
-Компіляція проєкту:
+Компіляція серверу:
 ```
 g++ -o server Server.cpp Overload.cpp -lboost_system -I/usr/include -L/usr/lib
+```
+Компіляція файлів cpp (для тестування):
+```
+g++ -o Start ./*.cpp
 ```
 Якщо порт закритий:
 ```
