@@ -5,7 +5,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <string>
-#include "Overload.h"
+#include "../lib/Overloads.h"
 
 using namespace std;
 
@@ -69,15 +69,17 @@ private:
         read(client_socket, buffer, sizeof(buffer) - 1);
         cout << "Received request: " << buffer << endl;
 
-        string response = processRequest(buffer);
+        Overloads overloads; // створюємо об'єкт класу Overloads
+        string response = overloads.processRequest(buffer); // викликаємо метод через об'єкт
         write(client_socket, response.c_str(), response.size());
     }
+
 };
 
-int main() {
-    Server server(8080);
-    if (!server.start()) {
-        return 1;
-    }
-    return 0;
-}
+// int main() {
+//     Server server(8080);
+//     if (!server.start()) {
+//         return 1;
+//     }
+//     return 0;
+// }
